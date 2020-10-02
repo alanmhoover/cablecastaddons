@@ -14,7 +14,7 @@ config_ip = config['cablecast']['server_ip']
 today = datetime.date.today()
 filename = f'dn{today.year}-{today.month:02}{today.day:02}'
 #  get info from cablecast
-conn = http.client.HTTPConnection('192.168.1.199')
+conn = http.client.HTTPConnection(config_ip)
 conn.request('GET','/cablecastapi/v1/shows/search/advanced/35298')
 r1 = conn.getresponse()
 print(r1.status, r1.reason)
