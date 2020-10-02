@@ -1,15 +1,20 @@
 #!/usr/local/bin/python3
 import http.client
 import datetime
+import configparser
 
 FORMAT = '480'
+
+config = configparser.ConfigParser()
+config.read('./cablecastconfig.ini')
+config_ip = config['cablecast']['server_ip']
 
 today = datetime.date.today()
 filename = f'dn{today.year}-{today.month:02}{today.day:02}'
 
 print(filename)
 caption_file_location = f"/scc/{filename}.scc"
-print(caption_file_location)
+# print(caption_file_location)
 if FORMAT == '360':
     mpeg_file_location = f"/democracynow/360/{filename}.mp4"
     extension = 'mp4'
